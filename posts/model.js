@@ -9,7 +9,9 @@ module.exports = {
 };
 
 function all() {
-  return db("posts");
+  return db("posts as p")
+    .join("users as u", "p.user_id", "=", "u.id")
+    .select("p.contents as quote", "u.username as saidBy");
 }
 
 function findById(id) {
