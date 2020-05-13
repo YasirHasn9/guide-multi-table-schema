@@ -36,9 +36,8 @@ router.post("/", (req, res) => {
   const userData = req.body;
 
   Users.add(userData)
-    .insert(userData)
-    .then(ids => {
-      res.status(201).json({ created: ids[0] });
+    .then(user => {
+      res.status(201).json({ created: user });
     })
     .catch(err => {
       res.status(500).json({ message: "Failed to create new user" });
