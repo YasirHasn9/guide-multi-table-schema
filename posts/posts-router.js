@@ -51,4 +51,16 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      await Posts.remove(req.params.id);
+      res.status(201).end();
+    } else {
+      res.status(404).json({ message: "Not found" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
