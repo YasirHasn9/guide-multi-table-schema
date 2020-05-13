@@ -28,8 +28,8 @@ function add(changes) {
 
 function update(id, change) {
   return db("users")
-    .update(changes)
-    .where({ id });
+    .update(change)
+    .where({ id })
 }
 
 function remove(id) {
