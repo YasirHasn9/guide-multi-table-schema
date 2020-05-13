@@ -1,6 +1,7 @@
 const express = require('express');
 
 const db = require('../data/db-config.js');
+const Users = require("./model")
 
 const router = express.Router();
 
