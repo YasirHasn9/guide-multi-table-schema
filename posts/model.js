@@ -3,7 +3,8 @@ const db = require("../data/db-config");
 module.exports = {
   all,
   findById,
-  add
+  add,
+  update
 };
 
 function all() {
@@ -20,4 +21,10 @@ function add(post) {
   return db("posts")
     .insert(post, "id")
     .then(ids => findById(ids[0]));
+}
+
+function update(id, changes) {
+  return db("posts")
+    .update(changes)
+    .where({ id });
 }

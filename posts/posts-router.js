@@ -38,4 +38,17 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.put("/:id", async (req, res, next) => {
+  try {
+    const post = await Posts.update(req.params.id, req.body);
+    if (post) {
+      res.json(post);
+    } else {
+      res.status(404).json({ message: "Not found" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
