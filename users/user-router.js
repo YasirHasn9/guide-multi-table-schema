@@ -49,9 +49,9 @@ router.put("/:id", (req, res) => {
   const changes = req.body;
 
   Users.update(id, changes)
-    .then(count => {
-      if (count) {
-        res.json({ update: count });
+    .then(user => {
+      if (user) {
+        res.json({ update: user });
       } else {
         res.status(404).json({ message: "Could not find user with given id" });
       }
@@ -67,9 +67,9 @@ router.delete("/:id", (req, res) => {
   db("users")
     .where({ id })
     .del()
-    .then(count => {
-      if (count) {
-        res.json({ removed: count });
+    .then(user => {
+      if (user) {
+        res.json({ removed: user });
       } else {
         res.status(404).json({ message: "Could not find user with given id" });
       }
